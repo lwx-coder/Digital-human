@@ -1,0 +1,109 @@
+{% extends 'projects/base.html' %}
+
+{% block title %}首页 - 后端开发框架{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">欢迎使用后端开发框架</h2>
+                <p class="card-text">这是一个基于Django和Django REST Framework的后端开发框架，已配置好日志、Swagger、CORS跨域和JWT认证等基础功能。</p>
+                {% if not user.is_authenticated %}
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <a href="{% url 'projects:login' %}" class="btn btn-primary me-md-2">登录</a>
+                    <a href="{% url 'projects:register' %}" class="btn btn-outline-primary">注册</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-user-shield"></i> 用户认证</h5>
+                <p class="card-text">提供完整的用户认证功能，包括注册、登录、手机验证码登录、重置密码等。</p>
+                {% if user.is_authenticated %}
+                <a href="{% url 'projects:profile' %}" class="btn btn-sm btn-primary">个人中心</a>
+                {% else %}
+                <a href="{% url 'projects:login' %}" class="btn btn-sm btn-primary">立即登录</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-key"></i> 权限管理</h5>
+                <p class="card-text">基于角色的访问控制系统(RBAC)，可以灵活配置用户角色和权限。</p>
+                {% if user.is_authenticated %}
+                <a href="{% url 'projects:rbac_test' %}" class="btn btn-sm btn-primary">权限测试</a>
+                {% else %}
+                <a href="{% url 'projects:login' %}" class="btn btn-sm btn-primary">立即登录</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-code"></i> API接口</h5>
+                <p class="card-text">提供丰富的RESTful API接口，支持JWT认证，方便前后端分离开发。</p>
+                {% if user.is_authenticated %}
+                <a href="{% url 'projects:api_test' %}" class="btn btn-sm btn-primary">API测试</a>
+                {% else %}
+                <a href="{% url 'projects:login' %}" class="btn btn-sm btn-primary">立即登录</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-book"></i> 文档资源</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>API文档 (Swagger)</span>
+                        <a href="/swagger/" target="_blank" class="btn btn-sm btn-outline-primary">查看</a>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>API文档 (ReDoc)</span>
+                        <a href="/redoc/" target="_blank" class="btn btn-sm btn-outline-primary">查看</a>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>管理后台</span>
+                        <a href="/admin/" target="_blank" class="btn btn-sm btn-outline-primary">访问</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-cogs"></i> 技术栈</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>Django</span>
+                        <span class="badge bg-primary rounded-pill">4.2.7</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>Django REST Framework</span>
+                        <span class="badge bg-primary rounded-pill">3.14.0</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>SimpleUI</span>
+                        <span class="badge bg-primary rounded-pill">最新版</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

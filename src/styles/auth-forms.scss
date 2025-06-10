@@ -1,0 +1,277 @@
+/* 认证表单通用样式 */
+.auth-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 30px 0;
+  background: linear-gradient(135deg, #409EFF, #36D1DC);
+  overflow: hidden;
+  
+  // 背景动态效果
+  &::before, &::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    animation: floating 15s infinite ease-in-out;
+  }
+  
+  &::before {
+    top: -100px;
+    left: -100px;
+    animation-delay: 0s;
+  }
+  
+  &::after {
+    bottom: -100px;
+    right: -100px;
+    animation-delay: -5s;
+    width: 600px;
+    height: 600px;
+  }
+
+  .auth-box {
+    position: relative;
+    width: 420px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    overflow: hidden;
+    transform: translateY(0);
+    transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+    z-index: 1;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    // 装饰效果
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, #409EFF, #36D1DC);
+    }
+
+    .auth-header {
+      text-align: center;
+      margin-bottom: 30px;
+      
+      .title {
+        font-size: 28px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 8px;
+        background: linear-gradient(90deg, #409EFF, #36D1DC);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      
+      .subtitle {
+        font-size: 16px;
+        color: #666;
+      }
+    }
+    
+    .auth-form {
+      .el-input__inner {
+        border-radius: 8px;
+        height: 42px;
+        border: 1px solid #e0e7ff;
+        transition: all 0.3s;
+        
+        &:focus {
+          border-color: #409EFF;
+          box-shadow: 0 0 0 2px rgba(64, 158, 255, 0.2);
+        }
+      }
+      
+      .el-form-item__label {
+        font-weight: 500;
+        color: #333;
+      }
+      
+      .code-input {
+        display: flex;
+        
+        .el-input {
+          flex: 1;
+          margin-right: 10px;
+        }
+        
+        .code-button {
+          border-radius: 8px;
+          background: linear-gradient(90deg, #409EFF, #36D1DC);
+          border: none;
+        }
+      }
+      
+      .password-eye {
+        cursor: pointer;
+        color: #c0c4cc;
+        
+        &:hover {
+          color: #409EFF;
+        }
+      }
+    }
+    
+    .auth-footer {
+      margin-top: 20px;
+      text-align: center;
+      color: #909399;
+      font-size: 12px;
+    }
+  }
+}
+
+/* 登录表单特殊样式 */
+.login-container {
+  .login-box {
+    .login-tabs {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+/* 注册表单特殊样式 */
+.register-container {
+  .register-box {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+}
+
+/* 找回密码表单特殊样式 */
+.forget-pwd-container {
+  .forget-pwd-box {
+    .steps {
+      margin: 20px 0;
+    }
+  }
+}
+
+/* 密码输入框眼睛图标样式 */
+.password-eye {
+  cursor: pointer;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 576px) {
+  .auth-container {
+    .auth-box {
+      max-width: 100%;
+      padding: 20px;
+    }
+  }
+}
+
+/* 通用表单样式 */
+.el-form-item__label {
+  font-weight: 500;
+  color: #333;
+}
+
+/* 通用链接样式 */
+a.auth-link {
+  color: #409EFF;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* 覆盖element-ui的tab样式 */
+.el-tabs__nav {
+  width: 100%;
+  display: flex;
+}
+
+.el-tabs__item {
+  flex: 1;
+  text-align: center;
+  font-size: 16px;
+  color: #666;
+
+  &.is-active {
+    color: #409EFF;
+  }
+  
+  &:hover {
+    color: #36D1DC;
+  }
+}
+
+.el-tabs__active-bar {
+  background: linear-gradient(90deg, #409EFF, #36D1DC);
+}
+
+/* 覆盖steps样式 */
+.el-steps--simple {
+  background: #f5f7fa;
+
+  .el-step__title {
+    font-size: 14px;
+  }
+
+  .el-step__head.is-process .el-step__icon-inner {
+    background: #409EFF;
+  }
+
+  .el-step__head.is-success .el-step__icon-inner {
+    background: #67c23a;
+  }
+}
+
+/* 浮动动画 */
+@keyframes floating {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(50px, 50px) scale(1.1);
+  }
+  50% {
+    transform: translate(0, 100px) scale(1);
+  }
+  75% {
+    transform: translate(-50px, 50px) scale(0.9);
+  }
+}
+
+/* 动态进入动画 */
+.fade-enter-active {
+  animation: fade-in 0.5s;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 响应式适配 */
+@media (max-width: 480px) {
+  .auth-box {
+    width: 90%;
+    padding: 30px 20px;
+  }
+} 

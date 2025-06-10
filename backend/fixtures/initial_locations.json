@@ -1,0 +1,452 @@
+[
+  {
+    "model": "navigation_management.location",
+    "pk": 1,
+    "fields": {
+      "name": "1号安检口",
+      "description": "T1航站楼主安检口",
+      "floor": 1,
+      "x_coordinate": 150,
+      "y_coordinate": 100,
+      "type": "security",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 2,
+    "fields": {
+      "name": "2号安检口",
+      "description": "T1航站楼辅助安检口",
+      "floor": 1,
+      "x_coordinate": 300,
+      "y_coordinate": 100,
+      "type": "security",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 3,
+    "fields": {
+      "name": "A1值机柜台",
+      "description": "国内航班值机区域",
+      "floor": 1,
+      "x_coordinate": 100,
+      "y_coordinate": 50,
+      "type": "check_in",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 4,
+    "fields": {
+      "name": "A2值机柜台",
+      "description": "国际航班值机区域",
+      "floor": 1,
+      "x_coordinate": 200,
+      "y_coordinate": 50,
+      "type": "check_in",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 5,
+    "fields": {
+      "name": "星巴克咖啡",
+      "description": "提供各种咖啡和茶饮",
+      "floor": 1,
+      "x_coordinate": 250,
+      "y_coordinate": 150,
+      "type": "restaurant",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 6,
+    "fields": {
+      "name": "便利店",
+      "description": "提供各种日用品和食品",
+      "floor": 1,
+      "x_coordinate": 350,
+      "y_coordinate": 150,
+      "type": "shop",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 7,
+    "fields": {
+      "name": "卫生间A",
+      "description": "航站楼一层男女卫生间",
+      "floor": 1,
+      "x_coordinate": 120,
+      "y_coordinate": 180,
+      "type": "toilet",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 8,
+    "fields": {
+      "name": "行李提取处",
+      "description": "抵达旅客行李提取区域",
+      "floor": 1,
+      "x_coordinate": 400,
+      "y_coordinate": 200,
+      "type": "luggage",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 9,
+    "fields": {
+      "name": "T1出口",
+      "description": "航站楼主出口",
+      "floor": 1,
+      "x_coordinate": 450,
+      "y_coordinate": 100,
+      "type": "exit",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 10,
+    "fields": {
+      "name": "T1入口",
+      "description": "航站楼主入口",
+      "floor": 1,
+      "x_coordinate": 50,
+      "y_coordinate": 100,
+      "type": "entrance",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 11,
+    "fields": {
+      "name": "登机口A1",
+      "description": "A区1号登机口",
+      "floor": 2,
+      "x_coordinate": 100,
+      "y_coordinate": 100,
+      "type": "gate",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 12,
+    "fields": {
+      "name": "登机口A2",
+      "description": "A区2号登机口",
+      "floor": 2,
+      "x_coordinate": 150,
+      "y_coordinate": 100,
+      "type": "gate",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 13,
+    "fields": {
+      "name": "登机口B1",
+      "description": "B区1号登机口",
+      "floor": 2,
+      "x_coordinate": 200,
+      "y_coordinate": 100,
+      "type": "gate",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 14,
+    "fields": {
+      "name": "登机口B2",
+      "description": "B区2号登机口",
+      "floor": 2,
+      "x_coordinate": 250,
+      "y_coordinate": 100,
+      "type": "gate",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 15,
+    "fields": {
+      "name": "快餐店",
+      "description": "提供各种快餐",
+      "floor": 2,
+      "x_coordinate": 150,
+      "y_coordinate": 200,
+      "type": "restaurant",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 16,
+    "fields": {
+      "name": "中餐厅",
+      "description": "提供正宗中餐",
+      "floor": 2,
+      "x_coordinate": 230,
+      "y_coordinate": 200,
+      "type": "restaurant",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 17,
+    "fields": {
+      "name": "书店",
+      "description": "提供各种书籍和杂志",
+      "floor": 2,
+      "x_coordinate": 300,
+      "y_coordinate": 200,
+      "type": "shop",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 18,
+    "fields": {
+      "name": "免税店",
+      "description": "提供各种免税商品",
+      "floor": 2,
+      "x_coordinate": 370,
+      "y_coordinate": 150,
+      "type": "shop",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 19,
+    "fields": {
+      "name": "卫生间B",
+      "description": "航站楼二层男女卫生间",
+      "floor": 2,
+      "x_coordinate": 200,
+      "y_coordinate": 250,
+      "type": "toilet",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 20,
+    "fields": {
+      "name": "VIP休息室",
+      "description": "VIP旅客专属休息区",
+      "floor": 2,
+      "x_coordinate": 400,
+      "y_coordinate": 100,
+      "type": "lounge",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 21,
+    "fields": {
+      "name": "登机口C1",
+      "description": "C区1号登机口",
+      "floor": 3,
+      "x_coordinate": 100,
+      "y_coordinate": 100,
+      "type": "gate",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 22,
+    "fields": {
+      "name": "登机口C2",
+      "description": "C区2号登机口",
+      "floor": 3,
+      "x_coordinate": 150,
+      "y_coordinate": 100,
+      "type": "gate",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 23,
+    "fields": {
+      "name": "餐饮区",
+      "description": "提供各种国际美食",
+      "floor": 3,
+      "x_coordinate": 200,
+      "y_coordinate": 150,
+      "type": "restaurant",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 24,
+    "fields": {
+      "name": "卫生间C",
+      "description": "航站楼三层男女卫生间",
+      "floor": 3,
+      "x_coordinate": 250,
+      "y_coordinate": 200,
+      "type": "toilet",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 25,
+    "fields": {
+      "name": "儿童游乐区",
+      "description": "儿童旅客休闲娱乐区",
+      "floor": 3,
+      "x_coordinate": 300,
+      "y_coordinate": 150,
+      "type": "other",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 26,
+    "fields": {
+      "name": "商务休息室",
+      "description": "商务旅客专属休息区",
+      "floor": 3,
+      "x_coordinate": 350,
+      "y_coordinate": 100,
+      "type": "lounge",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 27,
+    "fields": {
+      "name": "纪念品商店",
+      "description": "提供各种旅游纪念品",
+      "floor": 3,
+      "x_coordinate": 400,
+      "y_coordinate": 150,
+      "type": "shop",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 28,
+    "fields": {
+      "name": "医疗服务点",
+      "description": "提供紧急医疗服务",
+      "floor": 3,
+      "x_coordinate": 450,
+      "y_coordinate": 200,
+      "type": "other",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 29,
+    "fields": {
+      "name": "行李寄存处",
+      "description": "提供行李临时寄存服务",
+      "floor": 1,
+      "x_coordinate": 300,
+      "y_coordinate": 220,
+      "type": "luggage",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  },
+  {
+    "model": "navigation_management.location",
+    "pk": 30,
+    "fields": {
+      "name": "公共休息区",
+      "description": "旅客公共休息区域",
+      "floor": 2,
+      "x_coordinate": 150,
+      "y_coordinate": 300,
+      "type": "lounge",
+      "is_active": true,
+      "created_at": "2023-05-15T08:00:00Z",
+      "updated_at": "2023-05-15T08:00:00Z"
+    }
+  }
+] 

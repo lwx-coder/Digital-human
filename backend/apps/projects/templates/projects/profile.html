@@ -1,0 +1,67 @@
+{% extends 'projects/base.html' %}
+
+{% block title %}个人中心 - 后端开发框架{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-body text-center">
+                {% if user.avatar %}
+                <img src="{{ user.avatar.url }}" alt="用户头像" class="rounded-circle img-fluid" style="width: 150px;">
+                {% else %}
+                <img src="https://via.placeholder.com/150" alt="默认头像" class="rounded-circle img-fluid" style="width: 150px;">
+                {% endif %}
+                <h5 class="my-3">{{ user.username }}</h5>
+                <p class="text-muted mb-1">{{ user.email }}</p>
+                <p class="text-muted mb-4">{{ user.phone }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">个人信息</h5>
+            </div>
+            <div class="card-body">
+                <form method="post" action="{% url 'projects:profile' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="first_name" class="form-label">名</label>
+                            <input type="text" class="form-control" id="first_name" name="first_name" value="{{ user.first_name }}">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="last_name" class="form-label">姓</label>
+                            <input type="text" class="form-control" id="last_name" name="last_name" value="{{ user.last_name }}">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">邮箱</label>
+                        <input type="email" class="form-control" id="email" value="{{ user.email }}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">手机号</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" value="{{ user.phone }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="address" class="form-label">地址</label>
+                        <input type="text" class="form-control" id="address" name="address" value="{{ user.address }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="bio" class="form-label">个人简介</label>
+                        <textarea class="form-control" id="bio" name="bio" rows="3">{{ user.bio }}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="avatar" class="form-label">头像</label>
+                        <input type="file" class="form-control" id="avatar" name="avatar">
+                    </div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button type="submit" class="btn btn-primary">保存修改</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

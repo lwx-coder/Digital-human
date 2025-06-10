@@ -1,0 +1,164 @@
+{% extends 'projects/base.html' %}
+
+{% block title %}权限管理测试 - 后端开发框架{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">权限管理测试</h2>
+                <p class="card-text">在这里可以查看当前用户的角色和权限，测试权限管理功能。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">我的角色</h5>
+            </div>
+            <div class="card-body">
+                {% if user_roles %}
+                <div class="list-group">
+                    {% for role in user_roles %}
+                    <div class="list-group-item">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{ role.name }}</h5>
+                            <small class="text-muted">{{ role.code }}</small>
+                        </div>
+                        <p class="mb-1">{{ role.description }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle"></i> 您当前没有任何角色。
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">我的权限</h5>
+            </div>
+            <div class="card-body">
+                {% if user_permissions %}
+                <div class="list-group">
+                    {% for permission in user_permissions %}
+                    <div class="list-group-item">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{ permission.name }}</h5>
+                            <small class="text-muted">{{ permission.codename }}</small>
+                        </div>
+                        <p class="mb-1">{{ permission.description }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle"></i> 您当前没有任何权限。
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">权限检查测试</h5>
+            </div>
+            <div class="card-body">
+                <form id="permission-check-form">
+                    <div class="mb-3">
+                        <label for="permission-codename" class="form-label">权限代码</label>
+                        <input type="text" class="form-control" id="permission-codename" placeholder="例如: view_user">
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="button" id="check-permission-btn" class="btn btn-primary">检查权限</button>
+                    </div>
+                </form>
+                
+                <div class="mt-4" id="permission-result" style="display: none;">
+                    <div class="alert" id="permission-result-alert">
+                        <span id="permission-result-text"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 获取JWT令牌
+        function getToken() {
+            return localStorage.getItem('access_token') || '';
+        }
+        
+        // 检查权限按钮点击事件
+        document.getElementById('check-permission-btn').addEventListener('click', function() {
+            const codename = document.getElementById('permission-codename').value.trim();
+            
+            if (!codename) {
+                alert('请输入权限代码');
+                return;
+            }
+            
+            // 显示加载状态
+            document.getElementById('check-permission-btn').disabled = true;
+            document.getElementById('check-permission-btn').innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> 检查中...';
+            
+            // 发送请求
+            fetch('/api/auth/user-permissions/check_permission/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + getToken()
+                },
+                body: JSON.stringify({ codename: codename })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultElement = document.getElementById('permission-result');
+                const alertElement = document.getElementById('permission-result-alert');
+                const textElement = document.getElementById('permission-result-text');
+                
+                resultElement.style.display = 'block';
+                
+                if (data.has_permission) {
+                    alertElement.className = 'alert alert-success';
+                    textElement.innerHTML = '<i class="fas fa-check-circle"></i> 您拥有 <strong>' + codename + '</strong> 权限';
+                } else {
+                    alertElement.className = 'alert alert-danger';
+                    textElement.innerHTML = '<i class="fas fa-times-circle"></i> 您没有 <strong>' + codename + '</strong> 权限';
+                }
+            })
+            .catch(error => {
+                const resultElement = document.getElementById('permission-result');
+                const alertElement = document.getElementById('permission-result-alert');
+                const textElement = document.getElementById('permission-result-text');
+                
+                resultElement.style.display = 'block';
+                alertElement.className = 'alert alert-warning';
+                textElement.innerHTML = '<i class="fas fa-exclamation-triangle"></i> 检查权限时出错: ' + error.message;
+            })
+            .finally(() => {
+                // 恢复按钮状态
+                document.getElementById('check-permission-btn').disabled = false;
+                document.getElementById('check-permission-btn').textContent = '检查权限';
+            });
+        });
+    });
+</script>
+{% endblock %} 

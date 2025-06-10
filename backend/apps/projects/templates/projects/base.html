@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}后端开发框架{% endblock %}</title>
+    <!-- 引入Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 引入Font Awesome图标 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 56px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .content {
+            flex: 1;
+        }
+        .footer {
+            margin-top: auto;
+            padding: 20px 0;
+            background-color: #f8f9fa;
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        .card {
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .auth-form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .messages {
+            margin-bottom: 20px;
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'projects:index' %}">后端开发框架</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'projects:index' %}">首页</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/api-test/' %}active{% endif %}" href="{% url 'projects:api_test' %}">API测试</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/rbac-test/' %}active{% endif %}" href="{% url 'projects:rbac_test' %}">权限测试</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                <ul class="navbar-nav">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user"></i> {{ user.username }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'projects:profile' %}">个人中心</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'projects:logout' %}">退出登录</a></li>
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/login/' %}active{% endif %}" href="{% url 'projects:login' %}">登录</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/register/' %}active{% endif %}" href="{% url 'projects:register' %}">注册</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <div class="content">
+        <div class="container mt-4">
+            <!-- 消息提示 -->
+            {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- 页面内容 -->
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>后端开发框架</h5>
+                    <p>基于Django和Django REST Framework的后端开发框架，已配置好日志、Swagger、CORS跨域和JWT认证等基础功能。</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>链接</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/admin/" target="_blank">管理后台</a></li>
+                        <li><a href="/swagger/" target="_blank">API文档</a></li>
+                        <li><a href="/redoc/" target="_blank">API文档(ReDoc)</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>技术栈</h5>
+                    <ul class="list-unstyled">
+                        <li>Django 4.2.7</li>
+                        <li>Django REST Framework 3.14.0</li>
+                        <li>SimpleUI</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; 2024 后端开发框架. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 引入Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- 额外的JavaScript -->
+    {% block extra_js %}{% endblock %}
+</body>
+</html> 
