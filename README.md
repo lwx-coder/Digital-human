@@ -76,44 +76,6 @@
 - **drf-yasg**：API文档生成工具
 - **Pillow**：图像处理库，处理用户头像等图片资源
 
-## 系统模块详解
-
-### 1. 用户认证模块 (apps/users)
-- 实现了基于JWT的用户认证系统
-- 支持多种登录方式（用户名密码、手机验证码）
-- 自定义用户模型，扩展了标准用户字段
-- 角色权限管理，支持不同用户角色的权限控制
-
-### 2. 航班管理模块 (apps/flight_management)
-- 航班信息的CRUD操作
-- 航班状态实时更新
-- 航班播报记录管理
-- 支持多种航班状态（计划、延误、登机中、已起飞、已到达、取消）
-
-### 3. 旅客管理模块 (apps/passenger_management)
-- 旅客信息管理
-- 旅客活动记录跟踪
-- 旅客标签系统
-- 旅客资料扩展管理
-
-### 4. 失物招领模块 (apps/items_management)
-- 物品分类管理
-- 失物信息登记
-- 失物广播记录
-- 失物状态跟踪（寻物中、已找到、已认领、已关闭）
-
-### 5. 导航管理模块 (apps/navigation_management)
-- 位置信息管理
-- 导航记录跟踪
-- 时间安排管理
-- 支持多种位置类型（登机口、商店、餐厅、卫生间等）
-
-### 6. 信息公告模块 (apps/informations)
-- 公告类型管理
-- 公告信息CRUD
-- 公告播报记录
-- 支持多种公告类型（紧急通知、常规通知、拥堵区预警、登机口变更）
-
 ## 安装和使用
 
 ### 环境要求
@@ -207,73 +169,7 @@ python backend/manage.py runserver
 └── build/                 # 构建配置
 ```
 
-## API接口说明
 
-### 用户认证接口
-- `/api/users/login/` - 用户登录（POST）
-- `/api/users/logout/` - 用户登出（POST）
-- `/api/users/register/` - 用户注册（POST）
-- `/api/users/info/` - 获取用户信息（GET）
-- `/api/users/me/` - 获取当前用户详情（GET）
-- `/api/users/update_me/` - 更新当前用户信息（PUT/PATCH）
-
-### 航班相关接口
-- `/api/flight-management/flights/` - 航班列表（GET）和创建（POST）
-- `/api/flight-management/flights/{id}/` - 航班详情、更新和删除
-- `/api/flight-management/announcements/` - 航班播报记录
-
-### 旅客相关接口
-- `/api/passenger-management/passengers/` - 旅客列表
-- `/api/passenger-management/passengers/{id}/` - 旅客详情
-- `/api/passenger-management/passengers/{id}/activities/` - 旅客活动记录
-- `/api/passenger-management/passengers/all/activities/` - 所有旅客活动记录
-- `/api/passenger-management/tags/` - 旅客标签管理
-
-### 失物招领接口
-- `/api/items-management/categories/` - 物品类别管理
-- `/api/items-management/lost-items/` - 失物信息管理
-- `/api/items-management/broadcasts/` - 失物广播记录
-
-### 导航相关接口
-- `/api/navigation-management/locations/` - 位置信息管理
-- `/api/navigation-management/records/` - 导航记录管理
-- `/api/navigation-management/schedules/` - 时间安排管理
-
-### 信息公告接口
-- `/api/informations/types/` - 公告类型管理
-- `/api/informations/announcements/` - 公告信息管理
-- `/api/informations/broadcasts/` - 公告播报记录
-
-## 数据模型关系
-
-### 用户模型
-- `CustomUser` - 扩展Django用户模型，添加手机号、地址、头像等字段
-- `Role` - 用户角色模型，如旅客、管理员等
-
-### 航班模型
-- `Flight` - 航班信息模型，包含航班号、航空公司、出发/到达城市等信息
-- `FlightAnnouncement` - 航班播报记录模型，记录数字人播报内容
-
-### 旅客模型
-- `PassengerProfile` - 旅客资料模型，存储旅客扩展信息
-- `PassengerActivity` - 旅客活动记录模型
-- `PassengerNote` - 旅客备注模型
-- `PassengerTag` - 旅客标签模型
-
-### 失物招领模型
-- `ItemCategory` - 物品类别模型
-- `LostItem` - 失物信息模型
-- `ItemBroadcast` - 物品广播记录模型
-
-### 导航模型
-- `Location` - 位置信息模型
-- `NavigationRecord` - 导航记录模型
-- `TimeSchedule` - 时间安排模型
-
-### 信息公告模型
-- `AnnouncementType` - 公告类型模型
-- `Announcement` - 公告信息模型
-- `AnnouncementBroadcast` - 公告播报记录模型
 
 
 
